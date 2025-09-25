@@ -150,6 +150,7 @@ public class Constant {
         public static final int PigeonID = 14;
         public static final int PDHID = 0;
         public static final int pneumaticontroller = 15;
+        public static final int ejectorID = 28;
      }
      public final class DriveConstants {
         // Maximum robot speed (in meters per second)
@@ -224,18 +225,7 @@ public class Constant {
 
         public static final String kLimelightName = "limelight";
     }
-
-    public static final class CameraConstants {
-        public static final class MicrosoftLifeCamHD3000 {
-            public static final int Width_px = 640 / 2;
-            public static final int Height_px = 480 / 2;
-            public static final int vFOV = 60;
-            public static final int hFOV = 120;
-        }
-
-        public static final class Limelight2Plus {
-            public static final double HeightFromFloor = 0.3;
-            public static final double MountAngleOffset = -0.261799;
-        }
+    public class EjectorConstants{
+        public static final int joystickAxis = 0;
     }
 }

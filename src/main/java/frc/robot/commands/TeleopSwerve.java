@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.wpilibj2.command.button.CommandJoystick;
 import frc.robot.Subsystems.Constant.ControllerConstants;
 import frc.robot.Subsystems.Constant.DebugLevel;
 import frc.robot.Subsystems.Constant.DebugSetting;
@@ -14,7 +15,7 @@ import frc.robot.Subsystems.Constant.DriveConstants;
 import frc.robot.Subsystems.DriveTrainSubsystem;
 
 public class TeleopSwerve extends Command {
-    private Joystick controller;
+    private CommandJoystick controller;
     private DriveTrainSubsystem swerveDrive;
 
     public static final class JoystickAxes {
@@ -47,7 +48,7 @@ public class TeleopSwerve extends Command {
      * @param swerveDrive The drive train subsystem
      * @param controller A joystick
      */
-    public TeleopSwerve(DriveTrainSubsystem swerveDrive, Joystick controller){
+    public TeleopSwerve(DriveTrainSubsystem swerveDrive, CommandJoystick controller){
         this.controller = controller;
         this.swerveDrive = swerveDrive;
         addRequirements((SubsystemBase)swerveDrive);
@@ -63,7 +64,7 @@ public class TeleopSwerve extends Command {
     public void execute(){
         if (DriverStation.isAutonomous()){
             return;
-        } else if (controller.getRawButton(7) ) {
+        } else if (controller.button(7).getAsBoolean()) {
             return;
         } else {
             double xAxis;
@@ -100,7 +101,7 @@ public class TeleopSwerve extends Command {
             joystickAxes.set(xAxis, yAxis, zAxis);
             swerveDrive.drive(translation, rotation);
             swerveDrive.setJoystickAxes(getJoystickAxes());
-            if(controller.getRawButton(3)) {
+            if(controller.button(3).getAsBoolean()) {
                 swerveDrive.setGyroZero();
             }
         }
