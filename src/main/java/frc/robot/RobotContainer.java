@@ -6,12 +6,14 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Subsystems.Constant;
 import frc.robot.Subsystems.DriveTrainSubsystem;
 import frc.robot.Subsystems.EjectorSubsystem;
+import frc.robot.commands.EjectorCommand;
 import frc.robot.commands.TeleopSwerve;
 
 public class RobotContainer {
     private final DriveTrainSubsystem drive;
     private final EjectorSubsystem ejector;
     private final CommandJoystick drivestick;
+    private final CommandJoystick drivesticktwo;
 
     private Trigger jb_ZeroGyro;
     private Trigger jb_Rotate180;
@@ -20,6 +22,7 @@ public class RobotContainer {
         this.drive = new DriveTrainSubsystem();
         this.ejector = new EjectorSubsystem();
         this.drivestick = new CommandJoystick(0);
+        this.drivesticktwo = new CommandJoystick(1);
 
         this.jb_ZeroGyro = this.drivestick.button(Constant.ControllerConstants.ButtonMap.GyroZero);
         this.jb_Rotate180 = this.drivestick.button(Constant.ControllerConstants.ButtonMap.Rotate180);
@@ -28,9 +31,7 @@ public class RobotContainer {
 
         drive.setDefaultCommand(new TeleopSwerve(drive, drivestick));
 
-        ejector.setDefaultCommand(new InstantCommand(() -> {
-            ejector.driveEjector(drivestick.getRawAxis(Constant.EjectorConstants.joystickAxis));
-        }));
+        ejector.setDefaultCommand(new EjectorCommand(ejector, drivesticktwo));
     }
 
     private void configureButtonBindings() {

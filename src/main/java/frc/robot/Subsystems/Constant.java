@@ -226,6 +226,7 @@ public class Constant {
         public static final String kLimelightName = "limelight";
     }
     public class EjectorConstants{
-        public static final int joystickAxis = 0;
+        public static final int forwardAxis = 3;
+        public static final int backAxis = 2;
     }
 }
