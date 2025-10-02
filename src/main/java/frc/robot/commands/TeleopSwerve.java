@@ -12,6 +12,7 @@ import frc.robot.Subsystems.Constant.ControllerConstants;
 import frc.robot.Subsystems.Constant.DebugLevel;
 import frc.robot.Subsystems.Constant.DebugSetting;
 import frc.robot.Subsystems.Constant.DriveConstants;
+import frc.robot.Subsystems.Constant;
 import frc.robot.Subsystems.DriveTrainSubsystem;
 
 public class TeleopSwerve extends Command {
@@ -70,7 +71,12 @@ public class TeleopSwerve extends Command {
             double xAxis;
             double yAxis;
             double zAxis;
-            double speedMod = 1;
+            double speedMod = 0.8;
+
+            if (controller.button(Constant.ControllerConstants.ButtonMap.FastButton).getAsBoolean()){
+                speedMod = 1;
+            }
+
         // This chunk of code locks certain joystick directions if buttons are pressed
 
             yAxis = -controller.getY();

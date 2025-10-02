@@ -192,11 +192,11 @@ public class Constant {
         public static final class ButtonMap {
             public static final int GyroZero = 7;
             public static final int TagLockon = 1;
-            public static final int TagLockonAlt = 11;
             public static final int ObjectLockon = 2;
             public static final int ObjectLockonAlt = 12;
             public static final int OuttakePiece = -1;
             public static final int Rotate180 = 8;
+            public static final int FastButton = 11;
         }
     }
     public static final class DebugSetting{
