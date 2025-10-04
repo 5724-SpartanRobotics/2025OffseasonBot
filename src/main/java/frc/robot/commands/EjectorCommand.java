@@ -25,8 +25,7 @@ public class EjectorCommand extends Command {
     @Override
     public void execute() {
         double speed = controller.getRawAxis(Constant.EjectorConstants.forwardAxis) - controller.getRawAxis(Constant.EjectorConstants.backAxis);
-        ejector.driveEjector(-speed);
-
+        ejector.driveEjector(-speed, .50D);
     }
 
 }
